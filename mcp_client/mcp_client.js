@@ -1,12 +1,12 @@
 import path from 'path';
 import url from 'url';
 
-import { Client } from '@modelcontextprotocol/sdk/client';
-import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp';
+// ✅ Import from exact .js files using relative paths
+import { Client } from '../node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js';
+import { StreamableHTTPClientTransport } from '../node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js';
 
 const client = new Client({ name: 'vertex-mcp-client', version: '1.0.0' });
 
-// ✅ Use plain string, NOT an object
 const transport = new StreamableHTTPClientTransport('http://localhost:3000/mcp');
 
 export async function getUsersFromMCP() {
@@ -15,7 +15,7 @@ export async function getUsersFromMCP() {
   return users;
 }
 
-// Run if script is executed directly
+// Script execution check
 const __filename = url.fileURLToPath(import.meta.url);
 if (path.resolve(process.argv[1]) === path.resolve(__filename)) {
   getUsersFromMCP()
