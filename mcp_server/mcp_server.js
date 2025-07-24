@@ -3,7 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import pg from "pg";
 import dotenv from "dotenv";
-import crypto from "node:crypto"; // ✅ Required for sessionIdGenerator
+import crypto from "node:crypto";
 
 dotenv.config();
 

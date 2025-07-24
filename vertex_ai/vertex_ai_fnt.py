@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 @app.route("/get_users")
 def get_users():
-    # Run the MCP client via node and capture output
     result = subprocess.run(
         ["node", "../mcp-client/mcp-client.js"],
         stdout=subprocess.PIPE,
@@ -17,7 +16,7 @@ def get_users():
         try:
             users = json.loads(output)
         except Exception:
-            users = output  # fallback in case output isn't valid JSON
+            users = output
         return jsonify({"users": users})
     else:
         return jsonify({"error": result.stderr.decode('utf-8')}), 500
